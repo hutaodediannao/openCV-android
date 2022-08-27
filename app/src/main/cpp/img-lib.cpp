@@ -212,3 +212,47 @@ Java_com_example_myopencvndkapp_BlurActivity_gune(JNIEnv *env, jobject thiz, job
     GaussianBlur(mat, mat, Size(0, 0), 15);
     mat2Bitmap(env, mat, bitmap);
 }
+
+extern "C"
+JNIEXPORT void JNICALL
+Java_com_example_myopencvndkapp_BlurActivity_bilateralFilter(JNIEnv *env, jobject thiz,
+                                                             jobject bitmap) {
+    Mat mat;
+    bitmap2Mat(env, bitmap, mat);
+    //高斯双边滤波
+    Mat gray;
+    cvtColor(mat, gray, COLOR_BGRA2GRAY);
+    Mat dst;
+    bilateralFilter(gray, dst, 0, 150, 15);
+    mat2Bitmap(env, dst, bitmap);
+}
+
+extern "C"
+JNIEXPORT void JNICALL
+Java_com_example_myopencvndkapp_BlurActivity_pyrMeanShiftFiltering(JNIEnv *env, jobject thiz,
+                                                                   jobject bitmap) {
+    Mat mat;
+    bitmap2Mat(env, bitmap, mat);
+    //均值迁移滤波
+    Mat dst;
+    cvtColor(mat, dst, COLOR_BGRA2BGR);
+    pyrMeanShiftFiltering(dst, dst, 10, 50);
+    mat2Bitmap(env, dst, bitmap);
+}
+
+extern "C"
+JNIEXPORT void JNICALL
+Java_com_example_myopencvndkapp_BlurActivity_mohu(JNIEnv *env, jobject thiz, jobject bitmap) {
+    Mat mat;
+    bitmap2Mat(env, bitmap, mat);
+    //模糊
+    Mat k(3, 3, CV_32FC1);
+    float data[9] = {
+            1.0f / 9.0f, 1.0f / 9.0f, 1.0f / 9.0f,
+            1.0f / 9.0f, 1.0f / 9.0f, 1.0f / 9.0f,
+            1.0f / 9.0f, 1.0f / 9.0f, 1.0f / 9.0f,
+    };
+    k.push_back_(data);
+    filter2D(mat, mat, -1, k);
+    mat2Bitmap(env, mat, bitmap);
+}

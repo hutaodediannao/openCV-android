@@ -8,7 +8,7 @@ import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class BlurActivity extends AppCompatActivity implements View.OnClickListener {
+public class BlurActivity extends AppCompatActivity {
 
     private ImageView iv;
     private Bitmap bitmap;
@@ -21,19 +21,13 @@ public class BlurActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_blur);
-
-        iv = findViewById(R.id.iv);
-        findViewById(R.id.button).setOnClickListener(this);
-        findViewById(R.id.button1).setOnClickListener(this);
-        findViewById(R.id.button2).setOnClickListener(this);
-        findViewById(R.id.button3).setOnClickListener(this);
-
         Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.mipmap.ic);
         bitmap = bmp.copy(Bitmap.Config.ARGB_8888, true);
+
+        iv = findViewById(R.id.iv);
     }
 
-    @Override
-    public void onClick(View view) {
+    public void click(View view) {
         switch (view.getId()) {
             case R.id.button:
                 //中值滤波
@@ -51,11 +45,37 @@ public class BlurActivity extends AppCompatActivity implements View.OnClickListe
                 //高斯滤波
                 gune(bitmap);
                 break;
+            case R.id.button4:
+                //高斯双边滤波
+                bilateralFilter(bitmap);
+                break;
+            case R.id.button5:
+                //均值迁移滤波
+                pyrMeanShiftFiltering(bitmap);
+                break;
+            case R.id.button6:
+                //模糊操作
+                mohu(bitmap);
+                break;
+            case R.id.button7:
+                //锐化
+
+                break;
+            case R.id.button8:
+                //梯度
+
+                break;
             default:
                 break;
         }
         iv.setImageBitmap(bitmap);
     }
+
+    private native void mohu(Bitmap bitmap);
+
+    private native void pyrMeanShiftFiltering(Bitmap bitmap);
+
+    private native void bilateralFilter(Bitmap bitmap);
 
     private native void gune(Bitmap bitmap);
 
