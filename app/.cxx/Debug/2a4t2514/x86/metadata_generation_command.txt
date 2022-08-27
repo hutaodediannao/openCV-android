@@ -1,0 +1,25 @@
+                    Executable : E:\android\sdk\cmake\3.18.1\bin\cmake.exe
+arguments : 
+-HE:\htlWorkSpace\openCV-android\app\src\main\cpp
+-DCMAKE_SYSTEM_NAME=Android
+-DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+-DCMAKE_SYSTEM_VERSION=23
+-DANDROID_PLATFORM=android-23
+-DANDROID_ABI=x86
+-DCMAKE_ANDROID_ARCH_ABI=x86
+-DANDROID_NDK=E:\android\sdk\ndk\25.0.8775105
+-DCMAKE_ANDROID_NDK=E:\android\sdk\ndk\25.0.8775105
+-DCMAKE_TOOLCHAIN_FILE=E:\android\sdk\ndk\25.0.8775105\build\cmake\android.toolchain.cmake
+-DCMAKE_MAKE_PROGRAM=E:\android\sdk\cmake\3.18.1\bin\ninja.exe
+-DCMAKE_CXX_FLAGS=-std=c++11
+-DCMAKE_LIBRARY_OUTPUT_DIRECTORY=E:\htlWorkSpace\openCV-android\app\build\intermediates\cxx\Debug\2a4t2514\obj\x86
+-DCMAKE_RUNTIME_OUTPUT_DIRECTORY=E:\htlWorkSpace\openCV-android\app\build\intermediates\cxx\Debug\2a4t2514\obj\x86
+-DCMAKE_BUILD_TYPE=Debug
+-BE:\htlWorkSpace\openCV-android\app\.cxx\Debug\2a4t2514\x86
+-GNinja
+-DANDROID_STL=c++_shared
+jvmArgs : 
+
+
+                    Build command args: []
+                    Version: 2

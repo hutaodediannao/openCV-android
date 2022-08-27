@@ -160,11 +160,55 @@ Java_com_example_myopencvndkapp_CheckFaceActivity_checkFace(JNIEnv *env, jobject
             int thickness = 2;              // 画笔厚度
             int baseline = 0;               // 基线
 
-            putText(mat, text, Point(faceRect.x+20 , faceRect.y+100), fontFace, fontScale, Scalar(255, 0, 0, 255),
+            putText(mat, text, Point(faceRect.x + 20, faceRect.y + 100), fontFace, fontScale,
+                    Scalar(255, 0, 0, 255),
                     thickness, LINE_AA);
             // 把 mat 我们又放到 bitmap 里面
             mat2Bitmap(env, mat, bitmap);
             LOGI("转换完成");
         }
     }
+}
+
+extern "C"
+JNIEXPORT void JNICALL
+Java_com_example_myopencvndkapp_BlurActivity_medianBlur(JNIEnv *env, jobject thiz, jobject bitmap) {
+    Mat mat;
+    bitmap2Mat(env, bitmap, mat);
+    //中值滤波
+    medianBlur(mat, mat, 5);
+    mat2Bitmap(env, mat, bitmap);
+}
+
+extern "C"
+JNIEXPORT void JNICALL
+Java_com_example_myopencvndkapp_BlurActivity_dilate(JNIEnv *env, jobject thiz, jobject bitmap) {
+    Mat mat;
+    bitmap2Mat(env, bitmap, mat);
+    Mat kernel;
+    //最大值滤波
+    dilate(mat, mat, kernel);
+    mat2Bitmap(env, mat, bitmap);
+}
+
+extern "C"
+JNIEXPORT void JNICALL
+Java_com_example_myopencvndkapp_BlurActivity_erode(JNIEnv *env, jobject thiz, jobject bitmap) {
+    Mat mat;
+    bitmap2Mat(env, bitmap, mat);
+    Mat kernel;
+    //最小值滤波
+    erode(mat, mat, kernel);
+    mat2Bitmap(env, mat, bitmap);
+}
+
+extern "C"
+JNIEXPORT void JNICALL
+Java_com_example_myopencvndkapp_BlurActivity_gune(JNIEnv *env, jobject thiz, jobject bitmap) {
+    Mat mat;
+    bitmap2Mat(env, bitmap, mat);
+    Mat kernel;
+    //最小值滤波
+    GaussianBlur(mat, mat, Size(0, 0), 15);
+    mat2Bitmap(env, mat, bitmap);
 }

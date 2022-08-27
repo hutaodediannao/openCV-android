@@ -1,0 +1,5 @@
+# ninja log v5
+1	38	0	clean	2dca5be43cddbe9e
+21	2605	683287680	CMakeFiles/myopencvndkapp.dir/native-lib.cpp.o	8d74f32e5e800e2b
+1	2631	683287680	CMakeFiles/myopencvndkapp.dir/img-lib.cpp.o	e5522eaa3b812961
+2632	3060	683287681	E:/htlWorkSpace/openCV-android/app/build/intermediates/cxx/Debug/2a4t2514/obj/x86/libmyopencvndkapp.so	a94773bdb78e24f9

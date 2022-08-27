@@ -1,0 +1,4 @@
+ninja: Entering directory `E:\htlWorkSpace\openCV-android\app\.cxx\Debug\2a4t2514\x86_64'
+[1/3] Building CXX object CMakeFiles/myopencvndkapp.dir/native-lib.cpp.o
+[2/3] Building CXX object CMakeFiles/myopencvndkapp.dir/img-lib.cpp.o
+[3/3] Linking CXX shared library E:\htlWorkSpace\openCV-android\app\build\intermediates\cxx\Debug\2a4t2514\obj\x86_64\libmyopencvndkapp.so

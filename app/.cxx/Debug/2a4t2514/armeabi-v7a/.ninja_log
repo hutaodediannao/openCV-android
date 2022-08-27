@@ -1,0 +1,4 @@
+# ninja log v5
+19	2743	683287677	CMakeFiles/myopencvndkapp.dir/native-lib.cpp.o	70dbcbcdc4a107d4
+1	2776	683287677	CMakeFiles/myopencvndkapp.dir/img-lib.cpp.o	e79abad66e3e886
+2777	3133	683287678	E:/htlWorkSpace/openCV-android/app/build/intermediates/cxx/Debug/2a4t2514/obj/armeabi-v7a/libmyopencvndkapp.so	99e412a9504d7f49

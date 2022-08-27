@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.button1).setOnClickListener(this);
         findViewById(R.id.button2).setOnClickListener(this);
         findViewById(R.id.button3).setOnClickListener(this);
+        findViewById(R.id.button4).setOnClickListener(this);
         imageView = findViewById(R.id.imageView);
         //获取位图
         bitmap = BitmapFactory.decodeResource(this.getResources(), R.mipmap.ic);
@@ -52,6 +53,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.button3:
                 startActivity(new Intent(this, CheckFaceActivity.class));
+                break;
+            case R.id.button4:
+                startActivity(new Intent(this, BlurActivity.class));
                 break;
         }
     }
