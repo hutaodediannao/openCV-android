@@ -246,13 +246,34 @@ Java_com_example_myopencvndkapp_BlurActivity_mohu(JNIEnv *env, jobject thiz, job
     Mat mat;
     bitmap2Mat(env, bitmap, mat);
     //模糊
+    Mat myKnernel = (Mat_<double>(3, 3) <<
+                                        1.0f / 9.0f, 1.0f / 9.0f, 1.0f / 9.0f,
+            1.0f / 9.0f, 1.0f / 9.0f, 1.0f / 9.0f,
+            1.0f / 9.0f, 1.0f / 9.0f, 1.0f / 9.0f);
+    filter2D(mat, mat, -1, myKnernel);
+    mat2Bitmap(env, mat, bitmap);
+}
+
+extern "C"
+JNIEXPORT void JNICALL
+Java_com_example_myopencvndkapp_BlurActivity_ruiHua(JNIEnv *env, jobject thiz, jobject bitmap) {
+    Mat mat;
+    bitmap2Mat(env, bitmap, mat);
+    //模糊
     Mat k(3, 3, CV_32FC1);
-    float data[9] = {
-            1.0f / 9.0f, 1.0f / 9.0f, 1.0f / 9.0f,
-            1.0f / 9.0f, 1.0f / 9.0f, 1.0f / 9.0f,
-            1.0f / 9.0f, 1.0f / 9.0f, 1.0f / 9.0f,
-    };
-    k.push_back_(data);
-    filter2D(mat, mat, -1, k);
+    Mat myKnernel = (Mat_<double>(3, 3) << 0, -1, 0, -1, 5, -1, 0, -1, 0);
+    filter2D(mat, mat, -1, myKnernel);
+    mat2Bitmap(env, mat, bitmap);
+}
+
+extern "C"
+JNIEXPORT void JNICALL
+Java_com_example_myopencvndkapp_BlurActivity_tiDu(JNIEnv *env, jobject thiz, jobject bitmap) {
+    Mat mat;
+    bitmap2Mat(env, bitmap, mat);
+    //梯度
+    Mat robert_x = (Mat_<double>(3, 3) << -1, 0, 0, 1);
+    Mat robert_y = (Mat_<double>(3, 3) << 0, 1, -1, 0);
+    filter2D(mat, mat, -1, robert_x);
     mat2Bitmap(env, mat, bitmap);
 }

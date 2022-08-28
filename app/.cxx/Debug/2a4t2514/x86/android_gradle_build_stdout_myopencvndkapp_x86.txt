@@ -1,6 +1,5 @@
 ninja: Entering directory `E:\htlWorkSpace\openCV-android\app\.cxx\Debug\2a4t2514\x86'
-[1/3] Building CXX object CMakeFiles/myopencvndkapp.dir/native-lib.cpp.o
-[2/3] Building CXX object CMakeFiles/myopencvndkapp.dir/img-lib.cpp.o
+[1/2] Building CXX object CMakeFiles/myopencvndkapp.dir/img-lib.cpp.o
 E:/htlWorkSpace/openCV-android/app/src/main/cpp/img-lib.cpp:94:32: warning: format specifies type 'unsigned long' but the argument has type 'std::vector<cv::Rect_<int>>::size_type' (aka 'unsigned int') [-Wformat]
     LOGE("人脸个数：%lu", faces.size());
                     ~~~   ^~~~~~~~~~~~
@@ -16,4 +15,4 @@ E:/htlWorkSpace/openCV-android/app/src/main/cpp/img-lib.cpp:16:66: note: expande
 #define LOGE(...) __android_log_print(ANDROID_LOG_ERROR,LOG_TAG ,__VA_ARGS__) // 定义LOGE类型
                                                                  ^~~~~~~~~~~
 2 warnings generated.
-[3/3] Linking CXX shared library E:\htlWorkSpace\openCV-android\app\build\intermediates\cxx\Debug\2a4t2514\obj\x86\libmyopencvndkapp.so
+[2/2] Linking CXX shared library E:\htlWorkSpace\openCV-android\app\build\intermediates\cxx\Debug\2a4t2514\obj\x86\libmyopencvndkapp.so

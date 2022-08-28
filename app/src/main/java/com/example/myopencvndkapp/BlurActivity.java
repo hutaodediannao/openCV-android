@@ -59,17 +59,21 @@ public class BlurActivity extends AppCompatActivity {
                 break;
             case R.id.button7:
                 //锐化
-
+                ruiHua(bitmap);
                 break;
             case R.id.button8:
                 //梯度
-
+                tiDu(bitmap);
                 break;
             default:
                 break;
         }
         iv.setImageBitmap(bitmap);
     }
+
+    private native void tiDu(Bitmap bitmap);
+
+    private native void ruiHua(Bitmap bitmap);
 
     private native void mohu(Bitmap bitmap);
 
