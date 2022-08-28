@@ -160,7 +160,7 @@ Java_com_example_myopencvndkapp_CheckFaceActivity_checkFace(JNIEnv *env, jobject
             int thickness = 2;              // 画笔厚度
             int baseline = 0;               // 基线
 
-            putText(mat, text, Point(faceRect.x + 20, faceRect.y + 100), fontFace, fontScale,
+            putText(mat, text, Point(faceRect.x + 20, faceRect.y + 150), fontFace, fontScale,
                     Scalar(255, 0, 0, 255),
                     thickness, LINE_AA);
             // 把 mat 我们又放到 bitmap 里面
@@ -236,7 +236,7 @@ Java_com_example_myopencvndkapp_BlurActivity_pyrMeanShiftFiltering(JNIEnv *env, 
     //均值迁移滤波
     Mat dst;
     cvtColor(mat, dst, COLOR_BGRA2BGR);
-    pyrMeanShiftFiltering(dst, dst, 10, 50);
+    pyrMeanShiftFiltering(dst, dst, 15, 50);
     mat2Bitmap(env, dst, bitmap);
 }
 
@@ -275,5 +275,85 @@ Java_com_example_myopencvndkapp_BlurActivity_tiDu(JNIEnv *env, jobject thiz, job
     Mat robert_x = (Mat_<double>(3, 3) << -1, 0, 0, 1);
     Mat robert_y = (Mat_<double>(3, 3) << 0, 1, -1, 0);
     filter2D(mat, mat, -1, robert_x);
+    mat2Bitmap(env, mat, bitmap);
+}
+
+extern "C"
+JNIEXPORT void JNICALL
+Java_com_example_myopencvndkapp_MorphologyActivity_open(JNIEnv *env, jobject thiz, jobject bitmap) {
+    Mat mat;
+    bitmap2Mat(env, bitmap, mat);
+
+    Mat element = getStructuringElement(MORPH_RECT, Size(15, 15));
+    morphologyEx(mat, mat, MORPH_OPEN, element);
+
+    mat2Bitmap(env, mat, bitmap);
+}
+
+extern "C"
+JNIEXPORT void JNICALL
+Java_com_example_myopencvndkapp_MorphologyActivity_close(JNIEnv *env, jobject thiz,
+                                                         jobject bitmap) {
+    Mat mat;
+    bitmap2Mat(env, bitmap, mat);
+
+    Mat element = getStructuringElement(MORPH_RECT, Size(15, 15));
+    morphologyEx(mat, mat, MORPH_CLOSE, element);
+
+    mat2Bitmap(env, mat, bitmap);
+}
+
+extern "C"
+JNIEXPORT void JNICALL
+Java_com_example_myopencvndkapp_MorphologyActivity_topHat(JNIEnv *env, jobject thiz,
+                                                          jobject bitmap) {
+    Mat mat;
+    bitmap2Mat(env, bitmap, mat);
+
+    Mat element = getStructuringElement(MORPH_RECT, Size(15, 15));
+    morphologyEx(mat, mat, MORPH_TOPHAT, element);
+
+    mat2Bitmap(env, mat, bitmap);
+
+}
+
+extern "C"
+JNIEXPORT void JNICALL
+Java_com_example_myopencvndkapp_MorphologyActivity_blackHat(JNIEnv *env, jobject thiz,
+                                                            jobject bitmap) {
+    Mat mat;
+    bitmap2Mat(env, bitmap, mat);
+
+    Mat element = getStructuringElement(MORPH_RECT, Size(15, 15));
+    morphologyEx(mat, mat, MORPH_BLACKHAT, element);
+
+    mat2Bitmap(env, mat, bitmap);
+}
+
+extern "C"
+JNIEXPORT void JNICALL
+Java_com_example_myopencvndkapp_ThresholdActivity_threshold(JNIEnv *env, jobject thiz,
+                                                            jobject bitmap, jint type) {
+    Mat mat;
+    bitmap2Mat(env, bitmap, mat);
+    switch (type) {
+        case 1:
+            threshold(mat, mat, 125, 255, THRESH_BINARY);
+            break;
+        case 2:
+            threshold(mat, mat, 125, 255, THRESH_BINARY_INV);
+            break;
+        case 3:
+            threshold(mat, mat, 125, 255, THRESH_TRUNC);
+            break;
+        case 4:
+            threshold(mat, mat, 125, 255, THRESH_TOZERO);
+            break;
+        case 5:
+            threshold(mat, mat, 125, 255, THRESH_TOZERO_INV);
+            break;
+        default:
+            break;
+    }
     mat2Bitmap(env, mat, bitmap);
 }
