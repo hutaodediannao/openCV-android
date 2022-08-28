@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
  * 作者:胡涛
  * 日期:2022-8-28
  * 时间:15:16
- * 功能:形态学操作
+ * 功能:阈值化与阈值操作
  */
 public class ThresholdActivity extends AppCompatActivity {
 
@@ -48,6 +48,12 @@ public class ThresholdActivity extends AppCompatActivity {
                 break;
             case R.id.button4:
                 threshold(bitmap, 5);
+                break;
+            case R.id.button5:
+                threshold(bitmap, 6);
+                break;
+            case R.id.button6:
+                threshold(bitmap, 7);
                 break;
             default:
                 break;

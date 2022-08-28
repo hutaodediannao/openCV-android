@@ -336,24 +336,32 @@ Java_com_example_myopencvndkapp_ThresholdActivity_threshold(JNIEnv *env, jobject
                                                             jobject bitmap, jint type) {
     Mat mat;
     bitmap2Mat(env, bitmap, mat);
+    Mat gray;
+    cvtColor(mat, gray, COLOR_BGRA2GRAY);
     switch (type) {
         case 1:
-            threshold(mat, mat, 125, 255, THRESH_BINARY);
+            threshold(gray, gray, 125, 255, THRESH_BINARY);
             break;
         case 2:
-            threshold(mat, mat, 125, 255, THRESH_BINARY_INV);
+            threshold(gray, gray, 125, 255, THRESH_BINARY_INV);
             break;
         case 3:
-            threshold(mat, mat, 125, 255, THRESH_TRUNC);
+            threshold(gray, gray, 125, 255, THRESH_TRUNC);
             break;
         case 4:
-            threshold(mat, mat, 125, 255, THRESH_TOZERO);
+            threshold(gray, gray, 125, 255, THRESH_TOZERO);
             break;
         case 5:
-            threshold(mat, mat, 125, 255, THRESH_TOZERO_INV);
+            threshold(gray, gray, 125, 255, THRESH_TOZERO_INV);
+            break;
+        case 6:
+            threshold(gray, gray, 0, 255, THRESH_BINARY | THRESH_OTSU);
+            break;
+        case 7:
+            threshold(gray, gray, 0, 255, THRESH_TOZERO_INV | THRESH_TRIANGLE);
             break;
         default:
             break;
     }
-    mat2Bitmap(env, mat, bitmap);
+    mat2Bitmap(env, gray, bitmap);
 }

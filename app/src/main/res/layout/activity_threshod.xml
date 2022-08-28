@@ -57,6 +57,22 @@
             android:onClick="click"
             android:text="反阈值取零" />
 
+        <Button
+            android:id="@+id/button5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:onClick="click"
+            android:text="OTSU阈值" />
+
+        <Button
+            android:id="@+id/button6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:onClick="click"
+            android:text="Triangle阈值" />
+
     </LinearLayout>
 
 </ScrollView>
