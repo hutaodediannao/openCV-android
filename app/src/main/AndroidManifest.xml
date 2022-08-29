@@ -15,6 +15,9 @@
         android:theme="@style/Theme.MyOpenCvNdkApp"
         tools:targetApi="31">
         <activity
+            android:name=".featureDetection.TiDuActivity"
+            android:exported="false" />
+        <activity
             android:name=".ThresholdActivity"
             android:exported="false" />
         <activity
@@ -39,10 +42,10 @@
             </intent-filter>
         </activity>
     </application>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
     <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
 </manifest>

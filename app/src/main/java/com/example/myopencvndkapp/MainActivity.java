@@ -12,6 +12,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.myopencvndkapp.featureDetection.TiDuActivity;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     static {
@@ -20,7 +22,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private Bitmap bitmap;
     private ImageView imageView;
-    private View item0, item1,item2;
+    private View item0, item1, item2;
     private TextView tv0, tv1, tv2;
     private Button mButton7;
     private Button mButton8;
@@ -44,6 +46,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.button4).setOnClickListener(this);
         findViewById(R.id.button5).setOnClickListener(this);
         findViewById(R.id.button6).setOnClickListener(this);
+        findViewById(R.id.button7).setOnClickListener(this);
+        findViewById(R.id.button8).setOnClickListener(this);
+        findViewById(R.id.button9).setOnClickListener(this);
+        findViewById(R.id.button10).setOnClickListener(this);
+        findViewById(R.id.button11).setOnClickListener(this);
+        findViewById(R.id.button12).setOnClickListener(this);
+        findViewById(R.id.button13).setOnClickListener(this);
+        findViewById(R.id.button14).setOnClickListener(this);
+        findViewById(R.id.button15).setOnClickListener(this);
 
         tv0 = findViewById(R.id.tv0);
         tv1 = findViewById(R.id.tv1);
@@ -117,6 +128,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.button6:
                 //阈值化
                 startActivity(new Intent(this, ThresholdActivity.class));
+                break;
+            //基本特征检测
+            case R.id.button7:
+                //梯度计算
+                startActivity(new Intent(this, TiDuActivity.class));
+                break;
+            case R.id.button8:
+                break;
+            case R.id.button9:
+                break;
+            case R.id.button10:
+                break;
+            case R.id.button11:
+                break;
+            case R.id.button12:
+                break;
+            case R.id.button13:
+                break;
+            case R.id.button14:
+                break;
+            case R.id.button15:
+                break;
+            default:
                 break;
         }
     }

@@ -365,3 +365,53 @@ Java_com_example_myopencvndkapp_ThresholdActivity_threshold(JNIEnv *env, jobject
     }
     mat2Bitmap(env, gray, bitmap);
 }
+
+extern "C"
+JNIEXPORT void JNICALL
+Java_com_example_myopencvndkapp_featureDetection_TiDuActivity_sobel(JNIEnv *env, jobject thiz,
+                                                                    jobject bitmap) {
+    //X方向梯度
+    Mat mat;
+    bitmap2Mat(env, bitmap, mat);
+    Mat gradx;
+    Sobel(mat, gradx, CV_32F, 1, 0);
+    convertScaleAbs(gradx, gradx);
+
+    //Y方向梯度
+    bitmap2Mat(env, bitmap, mat);
+    Mat grady;
+    Sobel(mat, grady, CV_32F, 0, 1);
+    convertScaleAbs(grady, grady);
+
+    Mat dst;
+    addWeighted(gradx, 0.5, grady, 0.5, 0, dst);
+
+    mat2Bitmap(env, dst, bitmap);
+    gradx.release();
+    grady.release();
+}
+
+extern "C"
+JNIEXPORT void JNICALL
+Java_com_example_myopencvndkapp_featureDetection_TiDuActivity_scharr(JNIEnv *env, jobject thiz,
+                                                                     jobject bitmap) {
+    //X方向梯度
+    Mat mat;
+    bitmap2Mat(env, bitmap, mat);
+    Mat gradx;
+    Scharr(mat, gradx, CV_32F, 1, 0);
+    convertScaleAbs(gradx, gradx);
+
+    //Y方向梯度
+    bitmap2Mat(env, bitmap, mat);
+    Mat grady;
+    Scharr(mat, grady, CV_32F, 0, 1);
+    convertScaleAbs(grady, grady);
+
+    Mat dst;
+    addWeighted(gradx, 0.5, grady, 0.5, 0, dst);
+
+    mat2Bitmap(env, dst, bitmap);
+    gradx.release();
+    grady.release();
+}
