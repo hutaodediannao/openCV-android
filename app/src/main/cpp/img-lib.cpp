@@ -415,3 +415,26 @@ Java_com_example_myopencvndkapp_featureDetection_TiDuActivity_scharr(JNIEnv *env
     gradx.release();
     grady.release();
 }
+
+extern "C"
+JNIEXPORT void JNICALL
+Java_com_example_myopencvndkapp_featureDetection_LaplacianActivity_laplacian(JNIEnv *env,
+                                                                             jobject thiz,
+                                                                             jobject bitmap) {
+    Mat mat;
+    bitmap2Mat(env, bitmap, mat);
+
+    Mat dst;
+    Laplacian(mat, dst, CV_32F, 3, 1, 0);
+    convertScaleAbs(dst, dst);
+
+    mat2Bitmap(env, dst, bitmap);
+}
+
+extern "C"
+JNIEXPORT void JNICALL
+Java_com_example_myopencvndkapp_featureDetection_CannyActivity_canny(JNIEnv *env, jobject thiz,
+                                                                     jobject bitmap) {
+
+
+}

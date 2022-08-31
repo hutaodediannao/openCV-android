@@ -5,6 +5,7 @@
       <map>
         <entry key="..\:/htlWorkSpace/openCV-android/app/src/main/res/layout/activity_blur.xml" value="0.2" />
         <entry key="..\:/htlWorkSpace/openCV-android/app/src/main/res/layout/activity_check_face.xml" value="0.23020833333333332" />
+        <entry key="..\:/htlWorkSpace/openCV-android/app/src/main/res/layout/activity_laplacian.xml" value="0.23020833333333332" />
         <entry key="..\:/htlWorkSpace/openCV-android/app/src/main/res/layout/activity_main.xml" value="0.21574074074074073" />
         <entry key="..\:/htlWorkSpace/openCV-android/app/src/main/res/layout/activity_morphology.xml" value="0.23020833333333332" />
         <entry key="..\:/htlWorkSpace/openCV-android/app/src/main/res/layout/activity_threshod.xml" value="0.23020833333333332" />

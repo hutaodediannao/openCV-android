@@ -12,6 +12,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.myopencvndkapp.featureDetection.CannyActivity;
+import com.example.myopencvndkapp.featureDetection.LaplacianActivity;
 import com.example.myopencvndkapp.featureDetection.TiDuActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -135,8 +137,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(new Intent(this, TiDuActivity.class));
                 break;
             case R.id.button8:
+                //拉普拉斯算子
+                startActivity(new Intent(this, LaplacianActivity.class));
                 break;
             case R.id.button9:
+                //边缘检测
+                startActivity(new Intent(this, CannyActivity.class));
                 break;
             case R.id.button10:
                 break;
