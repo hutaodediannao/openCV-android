@@ -435,6 +435,21 @@ extern "C"
 JNIEXPORT void JNICALL
 Java_com_example_myopencvndkapp_featureDetection_CannyActivity_canny(JNIEnv *env, jobject thiz,
                                                                      jobject bitmap) {
+    Mat mat;
+    bitmap2Mat(env, bitmap, mat);
 
+    //高斯模糊处理原图
+    GaussianBlur(mat, mat, Size(3, 3), 0);
 
+    //灰度化
+    Mat gray;
+    cvtColor(mat, gray, COLOR_BGR2GRAY);
+
+    Mat edges;
+    Canny(mat, edges, 50, 150, 3, true);
+
+    Mat dst;
+    bitwise_and(mat, mat, dst, edges);
+
+    mat2Bitmap(env, dst, bitmap);
 }
