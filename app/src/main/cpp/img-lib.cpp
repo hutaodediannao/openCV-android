@@ -481,8 +481,5 @@ Java_com_example_myopencvndkapp_featureDetection_HoughLinesActivity_hougLines(JN
     for (int i = 0; i < lines.rows; ++i) {
         int oneLine[4];
 
-
     }
-
-
 }
