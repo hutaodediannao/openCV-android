@@ -4,6 +4,7 @@
 #include <string>
 #include <android/log.h>
 #include <opencv2/highgui/highgui_c.h>
+#include <math.h>
 
 using namespace cv;
 using namespace std;
@@ -452,4 +453,36 @@ Java_com_example_myopencvndkapp_featureDetection_CannyActivity_canny(JNIEnv *env
     bitwise_and(mat, mat, dst, edges);
 
     mat2Bitmap(env, dst, bitmap);
+}
+
+extern "C"
+JNIEXPORT void JNICALL
+Java_com_example_myopencvndkapp_featureDetection_HoughLinesActivity_hougLines(JNIEnv *env,
+                                                                              jobject thiz,
+                                                                              jobject bitmap) {
+    Mat mat;
+    bitmap2Mat(env, bitmap, mat);
+
+    Mat gray;
+    cvtColor(mat, gray, COLOR_BGRA2GRAY);
+
+    //二值化处理
+    threshold(gray, gray, 150, 255, THRESH_BINARY);//#自定义，把平均值高于的都截断，（mean=127,127的值都变成255，127以下保持不变）
+
+    //边缘检测
+    Mat edges;
+    Canny(gray, edges, 50, 150, 3, true);
+
+    //霍夫直线检测
+    Mat lines;
+    HoughLines(edges, lines, 1, M_PI / 180.0, 100, 50, 10);
+
+    Mat out = Mat::zeros(mat.size(), mat.type());
+    for (int i = 0; i < lines.rows; ++i) {
+        int oneLine[4];
+
+
+    }
+
+
 }

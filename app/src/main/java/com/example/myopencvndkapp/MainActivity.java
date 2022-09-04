@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.myopencvndkapp.featureDetection.CannyActivity;
+import com.example.myopencvndkapp.featureDetection.HoughLinesActivity;
 import com.example.myopencvndkapp.featureDetection.LaplacianActivity;
 import com.example.myopencvndkapp.featureDetection.TiDuActivity;
 
@@ -145,6 +146,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(new Intent(this, CannyActivity.class));
                 break;
             case R.id.button10:
+                //霍夫直线检测
+                startActivity(new Intent(this, HoughLinesActivity.class));
                 break;
             case R.id.button11:
                 break;

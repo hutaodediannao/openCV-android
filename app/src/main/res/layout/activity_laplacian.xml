@@ -15,7 +15,7 @@
             android:id="@+id/iv"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:src="@mipmap/ic" />
+            android:src="@mipmap/shape" />
 
         <Button
             android:id="@+id/button"
@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:onClick="click"
-            android:text="拉普拉斯算子" />
+            android:text="霍夫直线检测" />
 
     </LinearLayout>
 
