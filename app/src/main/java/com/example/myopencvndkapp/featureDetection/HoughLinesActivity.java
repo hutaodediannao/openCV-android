@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -30,6 +31,9 @@ public class HoughLinesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_laplacian);
         iv = findViewById(R.id.iv);
         bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.shape);
+        iv.setImageBitmap(bitmap);
+        Button btn = findViewById(R.id.button);
+        btn.setText("霍夫直线检测");
     }
 
     public void click(View view) {

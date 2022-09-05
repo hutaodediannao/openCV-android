@@ -467,7 +467,8 @@ Java_com_example_myopencvndkapp_featureDetection_HoughLinesActivity_hougLines(JN
     cvtColor(mat, gray, COLOR_BGRA2GRAY);
 
     //二值化处理
-    threshold(gray, gray, 150, 255, THRESH_BINARY);//#自定义，把平均值高于的都截断，（mean=127,127的值都变成255，127以下保持不变）
+    threshold(gray, gray, 150, 255,
+              THRESH_BINARY);//#自定义，把平均值高于的都截断，（mean=127,127的值都变成255，127以下保持不变）
 
     //边缘检测
     Mat edges;
@@ -478,8 +479,31 @@ Java_com_example_myopencvndkapp_featureDetection_HoughLinesActivity_hougLines(JN
     HoughLines(edges, lines, 1, M_PI / 180.0, 100, 50, 10);
 
     Mat out = Mat::zeros(mat.size(), mat.type());
-    for (int i = 0; i < lines.rows; ++i) {
-        int oneLine[4];
 
+    for (int i = 0; i < lines.rows; ++i) {
+        Mat lMat = lines.row(i);
+
+        int x0 = lMat.data[0];
+        int y0 = lMat.data[1];
+        int x1 = lMat.data[2];
+        int y1 = lMat.data[3];
+
+        line(out, Point(x0, y0), Point(x1, y1), Scalar(0, 0, 255), 5);
     }
+
+    out.copyTo(gray);
+
+    mat2Bitmap(env, gray, bitmap);
+
+    out.release();
+    lines.release();
+}
+
+extern "C"
+JNIEXPORT void JNICALL
+Java_com_example_myopencvndkapp_featureDetection_HoughCirclesActivity_houghCircles(JNIEnv *env,
+                                                                                   jobject thiz,
+                                                                                   jobject bitmap) {
+
+
 }

@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,9 +15,9 @@ import com.example.myopencvndkapp.R;
  * 作者:胡涛
  * 日期:2022-8-30
  * 时间:0:34
- * 功能:边缘检测Canny
+ * 功能:霍夫直线检测
  */
-public class CannyActivity extends AppCompatActivity {
+public class HoughCirclesActivity extends AppCompatActivity {
     static {
         System.loadLibrary("myopencvndkapp");
     }
@@ -31,16 +30,16 @@ public class CannyActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_laplacian);
         iv = findViewById(R.id.iv);
-        bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.ic);
+        bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.shape);
         iv.setImageBitmap(bitmap);
         Button btn = findViewById(R.id.button);
-        btn.setText("边缘检测Canny");
+        btn.setText("霍夫圆检测");
     }
 
     public void click(View view) {
         switch (view.getId()) {
             case R.id.button:
-                canny(bitmap);
+                houghCircles(bitmap);
                 break;
             default:
                 break;
@@ -48,5 +47,5 @@ public class CannyActivity extends AppCompatActivity {
         iv.setImageBitmap(bitmap);
     }
 
-    private native void canny(Bitmap bitmap);
+    private native void houghCircles(Bitmap bitmap);
 }

@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.myopencvndkapp.featureDetection.CannyActivity;
+import com.example.myopencvndkapp.featureDetection.HoughCirclesActivity;
 import com.example.myopencvndkapp.featureDetection.HoughLinesActivity;
 import com.example.myopencvndkapp.featureDetection.LaplacianActivity;
 import com.example.myopencvndkapp.featureDetection.TiDuActivity;
@@ -150,6 +151,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(new Intent(this, HoughLinesActivity.class));
                 break;
             case R.id.button11:
+                //霍夫圆检测
+                startActivity(new Intent(this, HoughCirclesActivity.class));
                 break;
             case R.id.button12:
                 break;

@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -30,6 +31,10 @@ public class LaplacianActivity extends AppCompatActivity {
         setContentView(R.layout.activity_laplacian);
         iv = findViewById(R.id.iv);
         bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.ic);
+
+        iv.setImageBitmap(bitmap);
+        Button btn = findViewById(R.id.button);
+        btn.setText("拉普拉斯算子");
     }
 
     public void click(View view) {
