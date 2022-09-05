@@ -504,6 +504,31 @@ JNIEXPORT void JNICALL
 Java_com_example_myopencvndkapp_featureDetection_HoughCirclesActivity_houghCircles(JNIEnv *env,
                                                                                    jobject thiz,
                                                                                    jobject bitmap) {
+    Mat src;
+    bitmap2Mat(env, bitmap, src);
 
+    Mat gray;
+    cvtColor(src, gray, COLOR_BGRA2GRAY);
 
+//    pyrMeanShiftFiltering(gray, gray, 15, 80);
+
+    GaussianBlur(gray, gray, Size(3, 3), 0);
+
+    Mat dst;
+    dst.create(src.size(), src.type());
+
+    Mat circles;
+    HoughCircles(gray, circles, HOUGH_GRADIENT, 1, 20, 100, 30, 10, 200);
+    for (int i = 0; i < circles.rows; ++i) {
+        int x = circles.col(i).data[0];
+        int y = circles.col(i).data[1];
+        int r = circles.col(i).data[2];
+        LOGI("%d\r,  %d\r, %d\n ", x, y, r);
+        circle(dst, Point(x, y), r, Scalar(255, 0, 0), 5, 8, 0);
+    }
+
+    mat2Bitmap(env, dst, bitmap);
+    circles.release();
+    dst.release();
+    gray.release();
 }

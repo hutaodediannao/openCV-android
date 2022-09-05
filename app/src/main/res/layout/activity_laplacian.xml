@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/holo_orange_light"
     tools:context=".featureDetection.TiDuActivity">
 
     <LinearLayout
@@ -15,6 +16,7 @@
             android:id="@+id/iv"
             android:layout_width="match_parent"
             android:layout_height="200dp"
+            android:background="@android:color/white"
             android:src="@mipmap/shape" />
 
         <Button
