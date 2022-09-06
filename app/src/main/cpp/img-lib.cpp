@@ -5,12 +5,13 @@
 #include <android/log.h>
 #include <opencv2/highgui/highgui_c.h>
 #include <math.h>
+#include <vector>
 
 using namespace cv;
 using namespace std;
 
 #ifndef LOG_TAG
-#define LOG_TAG "HELLO_JNI"
+#define LOG_TAG "JNI_TAG"
 #define LOGD(...) __android_log_print(ANDROID_LOG_DEBUG,LOG_TAG ,__VA_ARGS__) // 定义LOGD类型
 #define LOGI(...) __android_log_print(ANDROID_LOG_INFO,LOG_TAG ,__VA_ARGS__) // 定义LOGI类型
 #define LOGW(...) __android_log_print(ANDROID_LOG_WARN,LOG_TAG ,__VA_ARGS__) // 定义LOGW类型
@@ -531,4 +532,38 @@ Java_com_example_myopencvndkapp_featureDetection_HoughCirclesActivity_houghCircl
     circles.release();
     dst.release();
     gray.release();
+}
+
+extern "C"
+JNIEXPORT void JNICALL
+Java_com_example_myopencvndkapp_featureDetection_ContourActivity_drawContours(JNIEnv *env,
+                                                                              jobject thiz,
+                                                                              jobject bitmap) {
+
+    Mat src;
+    bitmap2Mat(env, bitmap, src);
+
+    //二值化
+    Mat gray;
+    Mat binary;
+    cvtColor(src, gray, COLOR_BGR2GRAY);
+    threshold(gray, binary, 0, 255, THRESH_BINARY | THRESH_OTSU);
+
+    //轮廓发现
+    vector<Mat> mats;
+    Mat hierarchy;
+    findContours(binary, mats, hierarchy, RETR_TREE, CHAIN_APPROX_SIMPLE, Point(0, 0));
+
+    //绘制轮廓
+    Mat dst(src.size(), src.type());
+    for (int i = 0; i < mats.size(); ++i) {
+        drawContours(dst, mats, i, Scalar(255, 0, 0), 5);
+    }
+
+    //开始装换并释放内存
+    mat2Bitmap(env, dst, bitmap);
+    gray.release();
+    binary.release();
+    hierarchy.release();
+    dst.release();
 }

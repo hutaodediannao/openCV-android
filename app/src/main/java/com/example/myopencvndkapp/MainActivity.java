@@ -1,5 +1,7 @@
 package com.example.myopencvndkapp;
 
+import static com.example.myopencvndkapp.util.Constant.TITLE_KEY;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -13,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.myopencvndkapp.featureDetection.CannyActivity;
+import com.example.myopencvndkapp.featureDetection.ContourActivity;
 import com.example.myopencvndkapp.featureDetection.HoughCirclesActivity;
 import com.example.myopencvndkapp.featureDetection.HoughLinesActivity;
 import com.example.myopencvndkapp.featureDetection.LaplacianActivity;
@@ -96,6 +99,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public native void erZhiBitmap(Bitmap bitmap);
 
+    private Intent intent = new Intent();
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -155,6 +160,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(new Intent(this, HoughCirclesActivity.class));
                 break;
             case R.id.button12:
+                //轮廓发现与绘制
+                intent.setClass(this, ContourActivity.class);
+                intent.putExtra(TITLE_KEY, "轮廓发现与绘制");
+                startActivity(intent);
                 break;
             case R.id.button13:
                 break;

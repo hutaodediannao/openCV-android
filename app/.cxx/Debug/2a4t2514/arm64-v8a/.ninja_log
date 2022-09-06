@@ -62,3 +62,9 @@
 453	3190	684011862	CMakeFiles/myopencvndkapp.dir/native-lib.cpp.o	b87773a77c3ad7c5
 6	3610	684011863	CMakeFiles/myopencvndkapp.dir/img-lib.cpp.o	30b7ea36bc407387
 3610	7410	684011867	E:/htlWorkSpace/openCV-android/app/build/intermediates/cxx/Debug/2a4t2514/obj/arm64-v8a/libmyopencvndkapp.so	2feacb4881991cb6
+0	54	0	clean	2dca5be43cddbe9e
+457	4241	684101923	CMakeFiles/myopencvndkapp.dir/native-lib.cpp.o	b87773a77c3ad7c5
+38	4341	684101923	CMakeFiles/myopencvndkapp.dir/img-lib.cpp.o	30b7ea36bc407387
+4341	5448	684101924	E:/htlWorkSpace/openCV-android/app/build/intermediates/cxx/Debug/2a4t2514/obj/arm64-v8a/libmyopencvndkapp.so	2feacb4881991cb6
+5	3577	684102459	CMakeFiles/myopencvndkapp.dir/img-lib.cpp.o	30b7ea36bc407387
+3577	4298	684102460	E:/htlWorkSpace/openCV-android/app/build/intermediates/cxx/Debug/2a4t2514/obj/arm64-v8a/libmyopencvndkapp.so	2feacb4881991cb6
