@@ -567,3 +567,46 @@ Java_com_example_myopencvndkapp_featureDetection_ContourActivity_drawContours(JN
     hierarchy.release();
     dst.release();
 }
+
+extern "C"
+JNIEXPORT void JNICALL
+Java_com_example_myopencvndkapp_featureDetection_RotateRectActivity_measureContours(JNIEnv *env,
+                                                                                    jobject thiz,
+                                                                                    jobject bitmap) {
+    Mat src;
+    Mat gray;
+    Mat binary;
+
+    //二值化
+    bitmap2Mat(env, bitmap, src);
+    cvtColor(src, gray, COLOR_BGR2GRAY);
+//    threshold(gray, binary, 0, 255, THRESH_BINARY | THRESH_OTSU);
+    threshold(gray, binary, 0, 255, THRESH_BINARY_INV | THRESH_OTSU);
+
+    //轮廓发现
+    vector<Mat> contours;
+    Mat hierarchy;
+//    findContours(binary, contours, hierarchy, RETR_TREE, CHAIN_APPROX_SIMPLE, Point(0, 0));
+    findContours(binary, contours, hierarchy, RETR_EXTERNAL, CHAIN_APPROX_SIMPLE, Point(0, 0));
+
+    //测绘轮廓
+    Mat dst(src.size(), src.type());
+    for (int i = 0; i < contours.size(); ++i) {
+        Rect rect = boundingRect(contours.at(i));
+        double w = rect.width;
+        double h = rect.height;
+        double rate = min(w, h) / max(w, h);
+        RotatedRect minRect = minAreaRect(contours.at(i));
+        w = minRect.size.width;
+        h = minRect.size.height;
+        rate = min(w, h) / max(w, h);
+
+        double area = contourArea(contours.at(i), false);
+        double arclen = arcLength(contours.at(i), true);
+        drawContours(dst, contours, i, Scalar(0, 255, 0), 3);
+    }
+    mat2Bitmap(env, dst, bitmap);
+
+    gray.release();
+    binary.release();
+}

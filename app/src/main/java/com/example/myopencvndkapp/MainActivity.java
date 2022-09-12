@@ -19,6 +19,7 @@ import com.example.myopencvndkapp.featureDetection.ContourActivity;
 import com.example.myopencvndkapp.featureDetection.HoughCirclesActivity;
 import com.example.myopencvndkapp.featureDetection.HoughLinesActivity;
 import com.example.myopencvndkapp.featureDetection.LaplacianActivity;
+import com.example.myopencvndkapp.featureDetection.RotateRectActivity;
 import com.example.myopencvndkapp.featureDetection.TiDuActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -166,6 +167,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
                 break;
             case R.id.button13:
+                //轮廓分析
+                intent.setClass(this, RotateRectActivity.class);
+                intent.putExtra(TITLE_KEY, "轮廓分析");
+                startActivity(intent);
                 break;
             case R.id.button14:
                 break;
