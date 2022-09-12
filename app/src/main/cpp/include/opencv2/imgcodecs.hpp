@@ -163,7 +163,7 @@ returns an empty matrix ( Mat::data==NULL ).
 Currently, the following file formats are supported:
 
 -   Windows bitmaps - \*.bmp, \*.dib (always supported)
--   JPEG files - \*.jpeg, \*.jpg, \*.jpe (see the *Note* section)
+-   JPEG files - \*.jpeg, \*mayun.jpg, \*.jpe (see the *Note* section)
 -   JPEG 2000 files - \*.jp2 (see the *Note* section)
 -   Portable Network Graphics - \*.png (see the *Note* section)
 -   WebP - \*.webp (see the *Note* section)

@@ -20,6 +20,7 @@ import com.example.myopencvndkapp.featureDetection.HoughCirclesActivity;
 import com.example.myopencvndkapp.featureDetection.HoughLinesActivity;
 import com.example.myopencvndkapp.featureDetection.LaplacianActivity;
 import com.example.myopencvndkapp.featureDetection.RotateRectActivity;
+import com.example.myopencvndkapp.featureDetection.TemplateActivity;
 import com.example.myopencvndkapp.featureDetection.TiDuActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -175,6 +176,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.button14:
                 break;
             case R.id.button15:
+                //模板匹配
+                intent.setClass(this, TemplateActivity.class);
+                intent.putExtra(TITLE_KEY, "模板匹配");
+                startActivity(intent);
                 break;
             default:
                 break;
