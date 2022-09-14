@@ -25,30 +25,31 @@ public class TemplateActivity extends AppCompatActivity {
     }
 
     private ImageView iv;
-    private Bitmap bitmap, temp;
+    private Bitmap bitmap, temp, resultBmp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_laplacian);
         iv = findViewById(R.id.iv);
-        bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.mayun);
-        temp = BitmapFactory.decodeResource(getResources(), R.mipmap.face);
+        bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.monkey);
+        temp = BitmapFactory.decodeResource(getResources(), R.mipmap.weiba);
+        resultBmp = bitmap.copy(Bitmap.Config.ARGB_8888, true);
         iv.setImageBitmap(bitmap);
         Button btn = findViewById(R.id.button);
-        btn.setText( getIntent().getStringExtra(TITLE_KEY));
+        btn.setText(getIntent().getStringExtra(TITLE_KEY));
     }
 
     public void click(View view) {
         switch (view.getId()) {
             case R.id.button:
-                matchTemplate(bitmap, temp);
+                matchTemplate(bitmap, temp, resultBmp);
+                iv.setImageBitmap(resultBmp);
                 break;
             default:
                 break;
         }
-        iv.setImageBitmap(bitmap);
     }
 
-    private native void matchTemplate(Bitmap bitmap, Bitmap temp);
+    private native void matchTemplate(Bitmap bitmap, Bitmap temp, Bitmap resultBmp);
 }

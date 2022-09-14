@@ -15,9 +15,9 @@
         <ImageView
             android:id="@+id/iv"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="wrap_content"
             android:background="@android:color/white"
-            android:src="@mipmap/shape" />
+            android:src="@mipmap/mayun" />
 
         <Button
             android:id="@+id/button"

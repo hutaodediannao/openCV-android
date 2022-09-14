@@ -616,14 +616,17 @@ JNIEXPORT void JNICALL
 Java_com_example_myopencvndkapp_featureDetection_TemplateActivity_matchTemplate(JNIEnv *env,
                                                                                 jobject thiz,
                                                                                 jobject bitmap,
-                                                                                jobject temp) {
+                                                                                jobject temp,
+                                                                                jobject result_bmp) {
 
     Mat source;
     Mat src;
     Mat tmp;
+    Mat resultMat;
     bitmap2Mat(env, bitmap, source);
-    cvtColor(source, src, COLOR_RGB2GRAY);
     bitmap2Mat(env, temp, tmp);
+    bitmap2Mat(env, result_bmp, resultMat);
+    cvtColor(source, src, COLOR_RGB2GRAY);
     cvtColor(tmp, tmp, COLOR_RGB2GRAY);
 
     int height = src.rows - tmp.rows + 1;
@@ -631,19 +634,16 @@ Java_com_example_myopencvndkapp_featureDetection_TemplateActivity_matchTemplate(
     Mat result(height, width, CV_32FC1);
 
     //模板匹配
-    int method = TM_CCOEFF_NORMED;
-    matchTemplate(src, tmp, result, method);
+    matchTemplate(src, tmp, result, TM_CCOEFF_NORMED);
     Point matchloc;
     Point minloc;
     Point maxloc;
-    minMaxLoc(src, NULL, NULL, &minloc, &maxloc);
-    if (method == TM_SQDIFF || method == TM_SQDIFF_NORMED) {
-        matchloc = minloc;
-    } else {
-        matchloc = maxloc;
-    }
-    rectangle(source, matchloc, Point(matchloc.x + tmp.cols, matchloc.y + tmp.rows), Scalar(255, 0, 0),3);
-    mat2Bitmap(env, source, bitmap);
+    minMaxLoc(src, NULL, NULL, &minloc, &maxloc, Mat());
+    matchloc = maxloc;
+
+    rectangle(resultMat, matchloc, Point(matchloc.x + tmp.cols, matchloc.y + tmp.rows),
+              Scalar(255, 0, 0), 3);
+    mat2Bitmap(env, resultMat, result_bmp);
 
     tmp.release();
     result.release();
